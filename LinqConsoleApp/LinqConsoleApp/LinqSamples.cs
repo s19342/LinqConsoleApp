@@ -312,14 +312,19 @@ namespace LinqConsoleApp
         /// </summary>
         public void Task10()
         {
-            var res = Emps.Union(new Emp[]
+            var res = Emps.Select(e => new
             {
-                new Emp()
-                {
-                Ename = "No value",
-                Job = (string)null,
-                HireDate = (DateTime?)null
-                }
+                Ename = e.Ename,
+                Job = e.Job,
+                Hiredate = e.HireDate
+            }).Union(new[] 
+            { 
+                new 
+                { 
+                    Ename = "No value", 
+                    Job = (string)null, 
+                    Hiredate = (DateTime?)null 
+                } 
             });
         }
 
